@@ -3,13 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -69,7 +62,7 @@ span.psw {
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
+  display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -179,9 +172,6 @@ window.onclick = function(event) {
     }
 }
 </script>
-
-</body>
-</html>
 
 </body>
 </html>

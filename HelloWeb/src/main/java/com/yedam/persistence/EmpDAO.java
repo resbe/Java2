@@ -32,6 +32,7 @@ public class EmpDAO {
 		}
 	}
 
+
 	// 단건조회.
 	public Employee getEmp(int empId) {
 		// 사원번호의 조회결과로 값이 있으면 Employee 반환.
