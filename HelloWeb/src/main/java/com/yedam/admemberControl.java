@@ -33,7 +33,7 @@ public class admemberControl implements Control {
 		if(dao.insertEmployee(emp)) {
 			resp.sendRedirect("main.do");
 		}else {
-			resp.sendRedirect("addMemberForm.do");
+			resp.sendRedirect("addMember.do");
 		}
 		}catch(IOException e){
 			e.printStackTrace();	

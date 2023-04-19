@@ -2,23 +2,23 @@ package com.yedam;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class LoginFormControl implements Control {
+public class LogoutControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) {
-		// 아이디/이메일 입력하는 화면.
+		HttpSession session = req.getSession();
+		session.invalidate(); //세션객체의 정보를 삭제
 		
-		String path = "WEB-INF/views/loginForm.jsp";
 		try {
-			req.getRequestDispatcher(path).forward(req, resp);
-		} catch (ServletException | IOException e) {
+			resp.sendRedirect("loginForm.do");
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 
 	}
 

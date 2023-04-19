@@ -37,7 +37,11 @@ public class FrontController extends HttpServlet {
 		 // 사원정보 삭제
 		map.put("/deleteMember.do", new DeleteMemberControl());
 		 // 로그인 화면 (아이디/이메일 입력화면)
-		map.put("loginForm.do", new LoginFormControl());
+		map.put("/loginForm.do", new LoginFormControl());
+		 // 로그인 처리.
+		map.put("/login.do", new LoginControl());
+		map.put("/logout.do", new LogoutControl());
+	
 	}
 	
 	@Override
