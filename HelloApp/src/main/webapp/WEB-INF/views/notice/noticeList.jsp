@@ -10,6 +10,7 @@
 </head>
 
 <body>
+	<c:set var = "no" vlaue="10"></c:set>
 	<table class="table">
 		<thead>
 			<tr>
@@ -22,6 +23,7 @@
 		<!-- 달러대괄호는 주석을 해도 내부의 값이 발동됨. -->
 		<c:forEach var="notice" items="${list }">
 			<tr>
+				<td><c:out value="${no=no+1 }"></c:out></td>
 				<td><a href="getNotice.do?nid=${notice.noticeId }">${notice.noticeId }</a></td>
 				<td>${notice.noticeTitle }</td>
 				<td>${notice.noticeWriter }</td>
