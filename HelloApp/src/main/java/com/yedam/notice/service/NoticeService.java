@@ -12,5 +12,4 @@ public interface NoticeService {
 	public boolean removeNotice(int noticeId);
 	public NoticeVO getNotice(int noticeId);
 	
-	
 }

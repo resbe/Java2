@@ -10,6 +10,7 @@ public class NoticeVO {
 	private String noticeWriter;
 	private String noticeTitle;
 	private String noticeSubject;
+	private String attachFile;
 	private Date noticeDate;
 	private int hitCount;
 	
