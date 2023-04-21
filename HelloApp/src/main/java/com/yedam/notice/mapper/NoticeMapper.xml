@@ -22,6 +22,17 @@
   	select * from tbl_notice order by 1 desc
   </select>
   
+  <select id="noticeWithPage" resultType="notice">
+  	<![CDATA[
+  	select b.* 
+  	from(select rownum rn, a.*
+       	 from (select * from tbl_notice
+             order by 1 desc) a
+      	 where rownum <= #{page}*10 )b
+  	where b.rn > (#{page} - 1) * 10
+  ]]>
+  </select>
+  
   <insert id="insertNotice" parameterType="notice">
   insert into tbl_notice (notice_id, notice_writer, notice_title,notice_subject, attach_file)
   values(notice_seq.nextval, #{noticeWriter}, #{noticeTitle}, #{noticeSubject}, #{attachFile})
@@ -31,7 +42,7 @@
   update tbl_notice
   	set notice_title=#{noticeTitle},
   		notice_subject=#{noticeSubject}
-  where notice_id = #{noticeId}
+  where notice_id=#{noticeId}
   </update>
   
   <delete id="deleteNotice" parameterType="notice">
@@ -45,4 +56,8 @@
   <update id="updateCount" parameterType="int">
   	update tbl_notice set hit_count=hit_count+1 where notice_id=#{noticeId}
   </update> 
+  
+  <select id="getCount" resultType="int">
+  	select count(*) from tbl_notice
+  </select>
   </mapper>
