@@ -1,10 +1,13 @@
 package com.yedam.domain;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.yedam.notice.mapper.NoticeMapper;
-import com.yedam.notice.domain.NoticeVO;
+import com.yedam.member.mapper.MemberMapper;
 
 public class sampleExe2 {
 	public static void main(String[] args) {
@@ -12,11 +15,16 @@ public class sampleExe2 {
 				com.yedam.common.DataSource.getInstance();
 		
 		try (SqlSession session = sqlSessionFactory.openSession(true)) {
-			  NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+			  MemberMapper mapper = session.getMapper(MemberMapper.class);
 			  
-			  for(NoticeVO vo : mapper.noticeList()) {
-				  System.out.println(vo);
+			  	List<Map<String,Object>> list= mapper.memberByDept();
+			  	//{Adminstration, 1},{Accounting,2}...
+				  
+			  	for(Map<String, Object> map : list) {
+			  	Set<String> set = map.keySet();  
+				  //for(String key : set) {
+					  System.out.println(map.get("DEPARTMENT_NAME")+","+map.get("CNT"));
+				  }
 			  }
 		}
 	}
-}

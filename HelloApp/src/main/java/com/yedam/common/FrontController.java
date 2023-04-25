@@ -16,10 +16,14 @@ import com.yedam.member.control.LoginFormControl;
 import com.yedam.member.control.LogoutControl;
 import com.yedam.member.control.ModifyMemberControl;
 import com.yedam.notice.control.AddNoticeControl;
+import com.yedam.notice.control.AddReplyControl;
 import com.yedam.notice.control.GetModifyNoticeControl;
 import com.yedam.notice.control.GetNoticeControl;
+import com.yedam.notice.control.ModifyReplyControl;
 import com.yedam.notice.control.NoticeAddForm;
 import com.yedam.notice.control.NoticeListControl;
+import com.yedam.notice.control.RemoveReplyControl;
+import com.yedam.notice.control.ReplyListControl;
 
 public class FrontController extends HttpServlet {
 		
@@ -47,6 +51,16 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
 		map.put("/modifyMember.do", new ModifyMemberControl());
+	
+		//댓글정보.
+		map.put("/replyList.do", new ReplyListControl());
+		map.put("/addReply.do", new AddReplyControl());
+		map.put("/removeReply.do", new RemoveReplyControl());
+		map.put("/modifyReply.do", new ModifyReplyControl());
+		
+		// 차트 생성.
+		map.put("/chart.do", new ChartFormControl());
+		map.put("/chartData.do", new ChartDataControl());
 	}
 	
 	
@@ -67,6 +81,13 @@ public class FrontController extends HttpServlet {
 			resp.sendRedirect(viewPage);
 			return;
 		}
+		
+		if(viewPage.endsWith(".json")) {
+			resp.setContentType("text/json;charset=UTF-8");
+			resp.getWriter().print(viewPage.substring(0, viewPage.length() - 5));
+			return;
+		}
+		
 		
 		//페이지 재지정.
 		RequestDispatcher rd = req.getRequestDispatcher(viewPage);
