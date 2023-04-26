@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <p>sample4.html</p>
+  <ul id="list">
+  	<li>1, kildong Hong,24 </li>
+  </ul>
+  <script>
+  	let xht = new XMLHttpRequest();// 비동기방식처리.
+  	xht.open('get','MOCK_DATA.json');
+  	xht.send();
+  	xht.onload = function(){
+  		//console.log((JSON.parse(xht.response)); ->json문자열
+  	}
+  	
+  	fetch('MOCK_DATA.json')
+  	.then(function(resolve){
+  		console.log('success');
+  		return resolve.texts(); 
+  	}, function(){
+  		console.log('error');
+  	})
+  	.then(function(result){
+  		console.log('success',result);
+  	}, function(error){
+  		console.log('errer',error);
+  	})  // 콘솔창 success 뒤 첫문장 에러가 뜨는것은 파란색 에러부분. 
+  	
+  	fetch('MOCK_DATA.json')
+  	
+  	.then( resolve => resolve.json() ) 
+  	.then( result=> 	{
+  		console.log(result);
+  		for (let i=0; i<result.length;i++){
+  			//코드 작성.
+  			
+  		}
+  	})
+  	.catch(error =>	console.log(error) )
+  	//json -> 결과값을 json타입의 객체로 변환시키겠다.
+  	
+  	
+  	
+  </script>
+</body>
+</html>

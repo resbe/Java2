@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.member.control.AddEventControl;
+import com.yedam.member.control.EventListControl;
 import com.yedam.member.control.LoginControl;
 import com.yedam.member.control.LoginFormControl;
 import com.yedam.member.control.LogoutControl;
 import com.yedam.member.control.ModifyMemberControl;
+import com.yedam.member.control.RemoveEventControl;
 import com.yedam.notice.control.AddNoticeControl;
 import com.yedam.notice.control.AddReplyControl;
 import com.yedam.notice.control.GetModifyNoticeControl;
@@ -61,6 +64,15 @@ public class FrontController extends HttpServlet {
 		// 차트 생성.
 		map.put("/chart.do", new ChartFormControl());
 		map.put("/chartData.do", new ChartDataControl());
+		
+		// fullcalendar.
+		map.put("/fullCalendar.do", new FullCaendarControl());
+		//목록. json형태의 data.
+		map.put("/eventList.do", new EventListControl());
+		//등록. json형태의 retCode:Success, Fail
+		map.put("/addEvent.do", new AddEventControl());
+		//삭제. json형태의 retCode:Success, Fail
+		map.put("/removeEvent.do", new RemoveEventControl());
 	}
 	
 	
