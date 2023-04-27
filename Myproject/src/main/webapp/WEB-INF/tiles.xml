@@ -5,9 +5,10 @@
 <tiles-definitions>					 
   <definition name="myproject" template="/WEB-INF/layout/template.jsp">
    <put-attribute name="nav" value="/WEB-INF/layout/nav.jsp" />
+   <put-attribute name="body" value="/WEB-INF/layout/body.jsp" />
   </definition>
   
-  <definition name ="WILDCARD:product/*" extends="myproject">
+  <definition name ="WILDCARD:prod/*" extends="myproject">
    <put-attribute name="body" value="/WEB-INF/views/prod/{1}.jsp"></put-attribute>
   </definition> 
   <definition name ="WILDCARD:*/*" extends="myproject]">

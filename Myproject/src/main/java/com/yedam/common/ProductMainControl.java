@@ -12,7 +12,7 @@ public class ProductMainControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		return "WEB-INF/views/prod/prodList.jsp";
+		return "prod/prodList.tiles";
 	}
 	
 }

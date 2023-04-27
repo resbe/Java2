@@ -21,7 +21,7 @@ public class ProductListControl implements Control {
 		List<ProductVO> list = service.products();
 		req.setAttribute("list", list);
 
-	return "prod/ProductList.tiles";
+	return "prod/prodList.tiles";
 	}
 	}
 
