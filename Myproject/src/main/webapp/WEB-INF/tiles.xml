@@ -6,12 +6,13 @@
   <definition name="myproject" template="/WEB-INF/layout/template.jsp">
    <put-attribute name="nav" value="/WEB-INF/layout/nav.jsp" />
    <put-attribute name="body" value="/WEB-INF/layout/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
   </definition>
   
   <definition name ="WILDCARD:prod/*" extends="myproject">
    <put-attribute name="body" value="/WEB-INF/views/prod/{1}.jsp"></put-attribute>
   </definition> 
-  <definition name ="WILDCARD:*/*" extends="myproject]">
+  <definition name ="WILDCARD:*/*" extends="myproject">
    <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
   </definition>
 </tiles-definitions>

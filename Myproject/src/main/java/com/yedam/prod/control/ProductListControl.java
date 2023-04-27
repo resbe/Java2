@@ -19,6 +19,7 @@ public class ProductListControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProductService service = new ProductServiceImpl();
 		List<ProductVO> list = service.products();
+		System.out.println(list);
 		req.setAttribute("list", list);
 
 	return "prod/prodList.tiles";

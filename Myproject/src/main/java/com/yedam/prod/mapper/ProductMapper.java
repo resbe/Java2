@@ -6,5 +6,5 @@ import com.yedam.prod.domain.ProductVO;
 
 public interface ProductMapper {
 	public List<ProductVO> productList();
-	public ProductVO searchProduct(int productId);
+	public ProductVO searchProduct(int Id);
 }

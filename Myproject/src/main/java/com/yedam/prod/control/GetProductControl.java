@@ -1,6 +1,7 @@
 package com.yedam.prod.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +18,16 @@ public class GetProductControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
 		String id = req.getParameter("id");
-		ProductService service = new ProductServiceImpl();
-		String json = "";
+		ProductService service = new ProductServiceImpl();	
 		ProductVO vo = service.getProduct(Integer.parseInt(id));
 		
-		return null;
+		req.setAttribute("getProduct", vo);
+		
+		List<ProductVO> list = service.products();
+		req.setAttribute("list", list);
+		
+		return "prod/prodMain.tiles";
 	}
 
 }

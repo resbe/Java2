@@ -7,6 +7,6 @@
 		select * from tbl_product
 	</select>
 	<select id="searchProduct" parameterType="int">
-		select * from  tbl_product where id=#{prdouctId}
+		select * from  tbl_product where id=#{Id}
 	</select>
 </mapper>
