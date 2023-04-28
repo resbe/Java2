@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.prod.control.GetProductControl;
+import com.yedam.prod.control.ProductAddControl;
 import com.yedam.prod.control.ProductListControl;
+import com.yedam.prod.control.ProductUploadControl;
 
 public class FrontController extends HttpServlet {
 
@@ -31,6 +33,10 @@ public class FrontController extends HttpServlet {
 		map.put("/getList.do", new ProductListControl());
 		// 상세페이지
 		map.put("/getProduct.do", new GetProductControl());
+		// ckeditor 관련.
+		map.put("/productAdd.do", new ProductAddControl());
+		// ckeditor 이미지 업로드 처리.
+		map.put("/prodUpload.do", new ProductUploadControl());
 
 	}
 
