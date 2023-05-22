@@ -19,7 +19,11 @@
   
   <!-- 공지사항관련. -->
   <select id="noticeList" resultType="notice">
-  	select * from tbl_notice order by 1 desc
+ 	<![CDATA[
+  	select * 
+  	from (select * from tbl_notice order by 1 desc)
+  	where rownum<10
+ 	]]>
   </select>
   
   <select id="noticeWithPage" resultType="notice">
@@ -34,8 +38,11 @@
   </select>
   
   <insert id="insertNotice" parameterType="notice">
+  	<selectKey keyProperty="noticeId" resultType="int" order="BEFORE">
+  		select notice_seq.nextval from dual
+  	</selectKey>
   insert into tbl_notice (notice_id, notice_writer, notice_title,notice_subject, attach_file)
-  values(notice_seq.nextval, #{noticeWriter}, #{noticeTitle}, #{noticeSubject}, #{attachFile})
+  values(#{noticeId}, #{noticeWriter}, #{noticeTitle}, #{noticeSubject}, #{attachFile})
   </insert>
   
   <update id="updateNotice" parameterType="notice">
@@ -43,6 +50,12 @@
   	set notice_title=#{noticeTitle},
   		notice_subject=#{noticeSubject}
   where notice_id=#{noticeId}
+  </update>
+  
+  <update id="updateNoticeFile" parameterType="notice">
+  update tbl_notice
+  set	 attach_file = #{attachFile}
+  where notice_id = #{noticeId}
   </update>
   
   <delete id="deleteNotice" parameterType="notice">

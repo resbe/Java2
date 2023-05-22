@@ -7,33 +7,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
-import com.yedam.common.PageDTO;
 import com.yedam.notice.domain.NoticeVO;
 import com.yedam.notice.service.NoticeService;
 import com.yedam.notice.service.NoticeServiceImpl;
 
-public class NoticeListControl implements Control {
+public class NoticeListJsonControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		//파라미터 받기
-		String pageStr = req.getParameter("page");
-		pageStr = pageStr ==null ? "1" : pageStr;
-		int page = Integer.parseInt(pageStr);
-		
 		NoticeService service = new NoticeServiceImpl();
-		int total = service.totalCount();
-		List<NoticeVO> list = service.noticeList(page);
-		PageDTO dto = new PageDTO(page,total);
-		req.setAttribute("list", list);
-		req.setAttribute("pageInfo", dto);
+		List<NoticeVO> list = service.noticeListJson();
+		System.out.println(list);
+		Gson gson = new GsonBuilder().create();
 		
-		
-		//return "WEB-INF/views/notice/noticeList.jsp";
-		return "notice/noticeList.tiles";
+		return gson.toJson(list) + ".json";
 	}
 
 }

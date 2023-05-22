@@ -18,6 +18,11 @@ public class NoticeServiceImpl implements NoticeService{
 //		return mapper.noticeList();
 		return mapper.noticeWithPage(page);
 	}
+	@Override
+	public List<NoticeVO> noticeListJson() {
+		// TODO Auto-generated method stub
+		return mapper.noticeList();
+	}
 
 	@Override
 	public boolean addNotice(NoticeVO vo) {
@@ -27,6 +32,11 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public boolean modifyNotice(NoticeVO vo) {
 		return mapper.updateNotice(vo) == 1;
+	}
+	
+	@Override
+	public boolean modifyNoticeFile(NoticeVO vo) {
+		return mapper.updateNoticeFile(vo) == 1;
 	}
 
 	@Override
@@ -45,5 +55,6 @@ public class NoticeServiceImpl implements NoticeService{
 	public int totalCount() {
 		return mapper.getCount();
 	}
+
 	
 }

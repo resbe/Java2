@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calendar.html</title>
+<style>
+  #show{
+    display: inline-block;
+    width : 420px;
+    height: 350px;
+    background-color: yellow;
+  }
+
+  #show span{
+    display: inline-block;
+    width : 95px;
+    height: 30px;
+    background-color: aqua;
+    text-align: center;
+    margin-top: 2px;
+    margin-left: 5px;
+  }
+</style>
+</head>
+<body>
+  
+  <h3>5월 달력</h3>
+  <input type="text" id ="words">
+  <button>검색삭제</button>
+  <p class="remain"></p>
+  <br>
+  <div id="show">
+    <span>Hello</span>
+  </div>
+  
+  <!-- <script src="calendarFun.js"></script> -->
+  <!--<script src="calendarObj.js"></script> -->
+  <script>
+    // 삭제 이벤트.
+    // 초기값으로 60이라는 값.
+
+    let initSecs = 60;
+    let missionSuccess = false;
+
+    let inteval = setInterval(function(){
+      document.querySelector('p.remain').innerText = "남은시간:"+initSecs--;
+      missionSuccess = !document.querySelectorAll('#show span').length;
+      if(missionSuccess){
+      alert('미션성공');
+      clearInterval(inteval);
+      document.querySelector('p.remain').innerText ="";
+      }
+      if(initSecs == 0) {
+      alert('미션실패');
+      clearInterval(inteval);  
+      document.querySelector('p.remain').innerText ="";
+      }
+      initSecs --;
+    }, 1000);
+
+    // alert(성공); - alert('미션실패');
+    
+
+    document.querySelector('button').addEventListener('click',function(){
+      let targetElem = document.querySelectorAll('#show span'); // NodeList반환.
+      if(targetElem.length == 0){
+        missionSuccess = true;
+      }
+      targetElem.forEach(span => {
+        let search = document.getElementById('words').value;
+        // 입력값과 span 태그의 값이 같은가 비교. 입력값이 없으면 '찾는 단어가 없습니다'메시지가 등장.
+        if(span.innerText == search ){
+          span.remove();
+        }else{
+        }
+      });
+      document.getElementById('words').value = "";
+    })
+   let words = 
+   'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum autem voluptate vero quae possimus reprehenderit repellendus veniam, dolore quia minus laudantium quis facilis consequatur obcaecati saepe error eius deserunt aliquid!';
+   // split(구분자) => 배열. 30개의 단어를 show에 배치.
+  let wordAry = words.split(' ');
+  console.log(wordAry)
+  document.getElementById('show')
+  
+  wordAry.forEach(word =>{
+    let span = document.createElement('span')
+    span.innerText = word;
+    show.append(span);
+  })
+
+  </script>
+</body>
+</html>

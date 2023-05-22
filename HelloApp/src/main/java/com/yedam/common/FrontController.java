@@ -22,11 +22,16 @@ import com.yedam.notice.control.AddNoticeControl;
 import com.yedam.notice.control.AddReplyControl;
 import com.yedam.notice.control.GetModifyNoticeControl;
 import com.yedam.notice.control.GetNoticeControl;
+import com.yedam.notice.control.ModifyNoticeFileControl;
+import com.yedam.notice.control.ModifyNoticejsonControl;
 import com.yedam.notice.control.ModifyReplyControl;
 import com.yedam.notice.control.NoticeAddForm;
+import com.yedam.notice.control.NoticeDelJsonControl;
 import com.yedam.notice.control.NoticeListControl;
+import com.yedam.notice.control.NoticeListJsonControl;
 import com.yedam.notice.control.RemoveReplyControl;
 import com.yedam.notice.control.ReplyListControl;
+import com.yedam.notice.controlo.GetNoticeJsonControl;
 
 public class FrontController extends HttpServlet {
 		
@@ -43,11 +48,16 @@ public class FrontController extends HttpServlet {
 		
 		// 공지사항
 		map.put("/noticeList.do", new NoticeListControl());
+		map.put("/noticeListJson.do", new NoticeListJsonControl()); //json
+		map.put("/delNoticeJson.do", new NoticeDelJsonControl());
 		//화면열어주기
 		map.put("/noticeAddForm.do", new NoticeAddForm());
 		map.put("/addNotice.do",new AddNoticeControl());
 		map.put("/getNotice.do", new GetNoticeControl());
 		map.put("/modifyNotice.do", new GetModifyNoticeControl());
+		map.put("/getNoticeJson.do", new GetNoticeJsonControl());
+		map.put("/modifyNoticeFile.do", new ModifyNoticeFileControl());
+		map.put("/modifyNoticeJson.do", new ModifyNoticejsonControl());
 		
 		//회원관련
 		map.put("/loginForm.do", new LoginFormControl());

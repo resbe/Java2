@@ -30,10 +30,11 @@
 </style>
 	<p>${pageInfo }</p>
 	
-	<c:set var = "no" value="10"></c:set>
+	<c:set var = "no" value="0"></c:set>
 	<table class="table">
 		<thead>
 			<tr>
+				<th>글번호</th>
 				<th>글번호</th>
 				<th>제목</th>
 				<th>작성자</th>
