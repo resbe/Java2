@@ -54,6 +54,7 @@
       //promise : async,await
 
       async function getServData(){
+        
         let promise = await fetch('Mock_Data.json');
         let promise1 = await promise.json();
         console.log(promise1);

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@2"></script>
+</head>
+
+<body>
+  <div class="app">
+    <label>이름</label><input v-model="name"><br>
+    <label>성적</label><input v-model="score">
+    <button v-on:click="saveScore">저장</button>
+    <button v-on:click="namedesc">이름순정렬</button>
+    <h3>학생목록</h3>
+    <ul>
+      <li v-for="stud in studentList">
+      {{stud.name}} - {{stud.score}} <button v-on:click="del($event)">삭제</button></li>  
+    </ul>
+  </div>
+  <script>
+    // for(let fruit of fruits){}
+    new Vue({
+      el: '.app',
+      data:{
+        studentList:[{
+          name: "홍길동",
+          score: 80
+      }],
+        name: '',
+        score:0
+      },
+      methods: {
+        saveScore(){
+         this.studentList.push({
+          name: this.name,
+          score: this.score
+         })
+        },
+        namedesc(){
+          studentList.sort(function(a, b) { // 한글 오름차순
+	        return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+          });
+        },
+        del(){
+          event.target.parentNode.remove();
+        }
+      },
+      updated:function(){
+        console.log('updated hook.')
+      }
+    })
+  </script>
+
+</body>
+</html>

@@ -1,9 +1,9 @@
 /**
  * 	noticeAsync.js
  */
-// async function()...
-
-async function loadData(){
+ // async function()... 
+ 
+/*async function loadData(){
 	let promise = await fetch('noticeListJson.do');
 	let promise1 = promise.json(); //json -> object.
 	let fields = ['noticeId', 'noticeTitle', 'noticeWriter','attachFile']
@@ -22,3 +22,4 @@ async function loadData(){
 document.addEventListener('DOMContentLoaded',function(){
 	loadData();
 })
+*/
