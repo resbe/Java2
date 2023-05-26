@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        var origData = [
+            ['Task', 'Hours per Day'],
+            ['도시락', 3],
+            ['갈비탕', 2],
+            ['오므라이스', 2],
+            ['짬뽕', 2],
+            ['비빔밥', 7],
+            ['메밀소바', 3]
+        ];
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(origData);
+            var options = {
+                title: 'My Daily Activities',
+                is3D: false
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div id="app">
+        <ul id="list">
+            <li v-for="(item,idx) in dataAry" >{{item.name}}
+            <button v-on:click="addone(idx)">vote</button>
+            </li>
+        </ul>
+
+    <script>
+    new Vue({  
+      el: '#app',
+      data:{
+        dataAry:[
+            {name:'도시락',vote:3},
+            {name:'갈비탕', vote:2},
+            {name:'오므라이스',vote: 2},
+            {name:'짬뽕', vote:2},
+            {name:'비빔밥',vote: 7},
+            {name:'메밀소바', vote:3}],
+      },
+      methods:{
+        addone:function(idx){
+        this.dataAry[i].vote++;
+        drawChart();
+
+        }
+      }
+    })
+    </script>
+        <!-- let list = document.getElementById('list');
+        origData.forEach((item, idx, ary) => {
+            if (idx) {
+                let li = document.createElement('li');
+                let txt = document.createTextNode(item[0] + ' ');
+                let btn = document.createElement('button');
+                btn.addEventListener('click', function () {
+                    item[1]++;
+                    drawChart();
+                })
+                btn.textContent = 'vote';
+                li.append(txt, btn);
+                list.append(li);
+            }
+        }) -->
+</body>
+
+</html>
