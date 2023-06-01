@@ -35,14 +35,11 @@ export default {
         .catch(err=> console.log(err));
       },
       methods : {
-        boardDelete : function(no){       
-              fetch('http://192.168.0.51:8081/myserver/boardDelete?no='+no)
-              .then(resopnse => response.json())
-              .then(data =>{
-                console.log(data);
-              })
-              this.object.splice(i,1);
-            }
-            this.$parent.setDataArray(this.object);
-          }
- }
+        boardDelete : function(no){
+          fetch('http://192.168.0.51:8081/myserver/boardDelete?no='+no)
+          .then(response => response.text())
+          .then(data => console.log(data))
+          .then(err => console.log(err))
+        }
+      }
+    }

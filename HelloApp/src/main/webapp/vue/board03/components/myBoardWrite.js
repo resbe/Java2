@@ -12,7 +12,7 @@ export default{
         </td>
     </tr>
   </table>
-  <button style="float:right;" v-on:click="boardList">목록</button>
+  <router-link tag="button" style="float:right;" v-bind:to="{ name : 'boardList' }">목록</router-link>
   <button style="float:right;" v-on:click="boardSave">저장</button>
 </div>`,
 data:function(){
@@ -22,12 +22,20 @@ data:function(){
     }
   },
 methods : {
-boardList : function(){
-this.$emit('board-list');
-},
 boardSave : function(){
-  fetch('http://192.168.0.51:8081/myserver/boardInsert')
-this.$emit('board-save', this.title, this.content);
-}
-} 
+  fetch('http://192.168.0.51:8081/myserver/boardInsert',{
+    method : 'post',
+    headers : {
+      'Content-type' : 'application/json'
+    },
+    body : JSON.stringify({title : this.title, content : this.content})
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    this.$router.push({ name : 'boardList' })
+  })
+  .catch(err => console.log(err));
+    }
+  } 
 }
